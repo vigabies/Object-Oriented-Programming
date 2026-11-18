@@ -1,5 +1,3 @@
-# Heranca
-
 print("\nExemplo de herança:")
 
 # Superclasse; classe base ou classe pai
@@ -19,7 +17,6 @@ class Animal:
         # "pass" significa "nao faca nada": serve para deixar o metodo vazio
         # sem dar erro, ja que cada animal emite um som diferente
         pass
-
 
 # HERANCA: Cachorro(Animal) significa que Cachorro herda de Animal
 # Ou seja, Cachorro ja tem __init__, nome e andar() sem precisar escrever de novo
@@ -65,3 +62,26 @@ print(f"Saldo apos deposito: {conta.get_saldo()}")
 
 conta.sacar(valor=200)
 print(f"Saldo apos saque: {conta.get_saldo()}")
+
+print("\nExemplo de abstracao:") # Esconder detalhes de implementacao, mostrar apenas o necessario
+from abc import ABC, abstractmethod
+
+class Veiculo(ABC):
+    # Metodo abstrato: nao tem implementacao, apenas a assinatura, tipo um molde
+    @abstractmethod 
+    def ligar(self):
+      pass
+
+    @abstractmethod # nas classes filhas, obrigatoriamente, deve-se implementar o metodo ligar e desligar porque sao abstratos na classe pai
+    def desligar(self):
+      pass
+
+class Carro(Veiculo):
+    def ligar (self):
+        return "Carro ligado"
+    def desligar(self):
+        return "Carro desligado"
+
+carro_amarelo = Carro()
+print(carro_amarelo.ligar())
+print(carro_amarelo.desligar())
